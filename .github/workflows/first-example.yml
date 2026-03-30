@@ -3,23 +3,23 @@ name: My First Workflow
 on: push
 
 jobs:
-    first_job:
-        runs-on: ubuntu-latest
-        steps:
-        - name: checkout Repo
-          uses: actions/checkout@v4
+  first_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
 
-        - name: List and Read file
-          run: |
-            echo "My First Github Action Job"
-            ls -ltra
-            cat README.md
+      - name: List and Read file
+        run: |
+          echo "My First Github Action Job"
+          ls -ltra
+          if [ -f README.md ]; then cat README.md; else echo "README.md not found"; fi
 
-        - name: Generate ASCII Artwork
-          run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
-        
-        # - name: List files
-        #   run: ls
+      - name: Install cowsay
+        run: sudo apt-get update && sudo apt-get install -y cowsay
 
-        # - name: Read file
-        #   run: cat README.md
+      - name: Generate ASCII Artwork
+        run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
+
+      - name: Show ASCII File
+        run: cat dragon.txt
