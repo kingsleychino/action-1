@@ -21,7 +21,7 @@ jobs:
           name: dragon-text-file
           path: dragon.txt
           
-  test_jobs:
+  test_jobs_2:
     runs-on: ubuntu-latest
     needs: build_jobs_1
     steps:
